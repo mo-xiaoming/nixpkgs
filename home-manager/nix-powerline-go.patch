@@ -70,7 +70,7 @@ index 64421a6..9f4c693 100644
  				0:   14,
  				1:   14,
 diff --git a/segment-nix-shell.go b/segment-nix-shell.go
-index af2ad1c..cceac88 100644
+index af2ad1c..c73b448 100644
 --- a/segment-nix-shell.go
 +++ b/segment-nix-shell.go
 @@ -13,8 +13,8 @@ func segmentNixShell(p *powerline) []pwl.Segment {
@@ -79,8 +79,8 @@ index af2ad1c..cceac88 100644
  		Name:       "nix-shell",
 -		Content:    "\uf313",
 -		Foreground: p.theme.NixShellFg,
-+		Content:    "nix-shell",
-+		Foreground: 15, // white
++		Content:    "nix",
++		Foreground: 15,
  		Background: p.theme.NixShellBg,
  	}}
  }
