@@ -1,0 +1,86 @@
+diff --git a/defaults.go b/defaults.go
+index 64421a6..9f4c693 100644
+--- a/defaults.go
++++ b/defaults.go
+@@ -66,23 +66,23 @@ var defaults = Config{
+ 	Modes: SymbolMap{
+ 		"compatible": {
+ 			Lock:                 "RO",
+-			Network:              "SSH",
++			Network:              "☎",
+ 			NetworkAlternate:     "SSH",
+-			Separator:            "\u25B6",
+-			SeparatorThin:        "\u276F",
+-			SeparatorReverse:     "\u25C0",
+-			SeparatorReverseThin: "\u276E",
+-
+-			RepoDetached:   "\u2693",
+-			RepoAhead:      "\u2B06",
+-			RepoBehind:     "\u2B07",
+-			RepoStaged:     "\u2714",
+-			RepoNotStaged:  "\u270E",
++			Separator:            "►", // \u25B6
++			SeparatorThin:        "❯", // \u276F
++			SeparatorReverse:     "◀", // \u25C0
++			SeparatorReverseThin: "❮", // \u276E
++
++			RepoDetached:   "‼", // \u2693
++			RepoAhead:      "↑",  // \u2B06
++			RepoBehind:     "↓",  // \u2B07
++			RepoStaged:     "✓",  // \u2714
++			RepoNotStaged:  "✏",  // \u270E
+ 			RepoUntracked:  "+",
+-			RepoConflicted: "\u273C",
+-			RepoStashed:    "\u2691",
++			RepoConflicted: "✶",  // \u273C
++			RepoStashed:    "Ṧ",  // \u2691
+ 
+-			VenvIndicator: "\uE235",
++			VenvIndicator: "🐍",  // \uE235
+ 		},
+ 		"patched": {
+ 			Lock:                 "\uE0A2",
+@@ -904,7 +904,7 @@ var defaults = Config{
+ 			HomeFg:             15,
+ 			HomeBg:             4,
+ 			PathFg:             15,
+-			PathBg:             10,
++			PathBg:             4,
+ 			CwdFg:              15,
+ 			SeparatorFg:        15,
+ 			ReadonlyFg:         8,
+@@ -927,7 +927,7 @@ var defaults = Config{
+ 			CmdFailedBg:        5,
+ 			SvnChangesFg:       2,
+ 			SvnChangesBg:       3,
+-			GitAheadFg:         14,
++			GitAheadFg:         15,
+ 			GitAheadBg:         10,
+ 			GitBehindFg:        14,
+ 			GitBehindBg:        10,
+@@ -964,8 +964,8 @@ var defaults = Config{
+ 			LoadHighBg:         5,
+ 			LoadAvgValue:       5,
+ 			LoadThresholdBad:   1.0,
+-			NixShellFg:         0,
+-			NixShellBg:         4,
++			NixShellFg:         15,
++			NixShellBg:         69,
+ 			HostnameColorizedFgMap: map[uint8]uint8{
+ 				0:   14,
+ 				1:   14,
+diff --git a/segment-nix-shell.go b/segment-nix-shell.go
+index af2ad1c..cceac88 100644
+--- a/segment-nix-shell.go
++++ b/segment-nix-shell.go
+@@ -13,8 +13,8 @@ func segmentNixShell(p *powerline) []pwl.Segment {
+ 	}
+ 	return []pwl.Segment{{
+ 		Name:       "nix-shell",
+-		Content:    "\uf313",
+-		Foreground: p.theme.NixShellFg,
++		Content:    "nix-shell",
++		Foreground: 15, // white
+ 		Background: p.theme.NixShellBg,
+ 	}}
+ }
