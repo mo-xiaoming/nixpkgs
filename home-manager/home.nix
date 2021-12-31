@@ -13,7 +13,6 @@
   services.gpg-agent.enable = true;
 
   home.packages = with pkgs; [
-    #clang-tools
     curl
     zip
     unzip
@@ -41,6 +40,7 @@
     lesspipe.enable = true;
     nix-index.enable = true;
     man.enable = true;
+    bottom.enable = true;
 
     powerline-go = {
       enable = true;
@@ -52,19 +52,8 @@
         cwd-mode = "plain";
         mode = "compatible";
         numeric-exit-codes = true;
-        #theme = "solarized-dark16";
       };
     };
-
-   bottom = {
-     enable = true;
-     settings = {
-       flags = {
-         #color = "default-light";
-       };
-     };
-   };
-
 
     tmux = {
       enable = true;
@@ -265,8 +254,6 @@
           "rust-analyzer.inlayHints.refreshOnInsertMode" = true;
           "rust-analyzer.rustfmt.enableRangeFormatting" = true;
           "rust-analyzer.checkOnSave.command" = "clippy";
-          #"rust-client.disableRustup" = true;
-          #"rust.clippy_preference" = "on";
           languageserver = {
             haskell = {
               command = "haskell-language-server-wrapper";

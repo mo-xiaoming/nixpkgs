@@ -1,10 +1,5 @@
-"set termguicolors
 set background=dark
 hi CocFloating ctermbg=black
-"hi FgCocInfoFloatBgCocFloating ctermfg=blue ctermbg=white
-"hi FgCocWarningFloatBgCocFloating ctermfg=brown ctermbg=white
-"hi FgCocErrorFloatBgCocFloating ctermfg=red ctermbg=white
-"hi PmenuSel ctermbg=yellow ctermfg=black
 
 set hidden
 
@@ -22,21 +17,11 @@ set path+=**
 set diffopt+=internal,algorithm:patience
 
 set number
-"" Always show the signcolumn, otherwise it would shift the text each time
-"" diagnostics appear/become resolved.
-"if has("nvim-0.5.0") || has("patch-8.1.1564")
-"  " Recently vim can merge signcolumn and number column into one
-"  set signcolumn=number
-"else
-"  set signcolumn=yes
-"endif
 set signcolumn=yes
 
 set showmode    " status line displays 'insert' or 'visual' when not in normal mode
 
 match ErrorMsg '\s\+$'
-" remove trailing whitespaces automatically
-"autocmd BufWritePre * :%s/\s\+$//e
 
 set shiftwidth=2 " shiftwidth, number of spaces for autoindent
 set tabstop=2   " tabstop, number of spaces for tab character
@@ -53,8 +38,6 @@ set splitbelow
 set splitright
 
 set confirm
-
-"auto FileType json syntax match Comment +\/\/.\+$+
 
 auto FileType cpp,c    :packadd coc-clangd coc-explorer taglist-vim vim-lsp-cxx-highlight vim-gutentags
 auto FileType json     :packadd coc-json
@@ -119,30 +102,8 @@ nnoremap <Leader>s :CocCommand clangd.symbolInfo<CR>
 """""""""""""""""""""" coc-complorer
 nnoremap <Leader>e :CocCommand explorer<CR>
 
-"""""""""""""""""""""" vim-lsp-cxx-highlight
-"let g:lsp_cxx_hl_light_bg = 1
-"hi LspCxxHlGroupNamespace ctermfg=Brown guifg=#3D3D00 cterm=none gui=none
-
-"if l:bg == 'dark'
-"    hi LspCxxHlGroupEnumConstant ctermfg=Magenta guifg=#AD7FA8 cterm=none gui=none
-"    hi LspCxxHlGroupNamespace ctermfg=Yellow guifg=#BBBB00 cterm=none gui=none
-"    hi LspCxxHlGroupMemberVariable ctermfg=White guifg=White
-"else
-"    hi LspCxxHlGroupEnumConstant ctermfg=Magenta guifg=#573F54 cterm=none gui=none
-"    hi LspCxxHlGroupNamespace ctermfg=Yellow guifg=#3D3D00 cterm=none gui=none
-"    hi LspCxxHlGroupMemberVariable ctermfg=Black guifg=Black
-"endif
-
 """""""""""""""""""""" luochen1990/rainbow
 let g:rainbow_active = 1 "set to 0 if you want to enable it later via :RainbowToggle
-" for light background
-" disable for cmake https://github.com/luochen1990/rainbow/issues/77
-"let g:rainbow_conf = {
-"      \ 'ctermfgs': ['darkblue', 'darkyellow', 'darkcyan', 'darkmagenta'],
-"      \ 'separately': {
-"      \    'cmake': 0,
-"      \ }
-"\}
 let g:rainbow_conf = {
       \ 'separately': {
       \    'cmake': 0,
