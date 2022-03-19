@@ -254,6 +254,13 @@
           "rust-analyzer.inlayHints.refreshOnInsertMode" = true;
           "rust-analyzer.rustfmt.enableRangeFormatting" = true;
           "rust-analyzer.checkOnSave.command" = "clippy";
+          "sumneko-lua.enableNvimLuaDev" = true;
+          "sumneko-lua.inlayHints.refreshOnInsertMode" = true;
+          "Lua.IntelliSense.traceBeSetted" = true;
+          "Lua.IntelliSense.traceFieldInject" = true;
+          "Lua.IntelliSense.traceLocalSet" = true;
+          "Lua.IntelliSense.traceReturn" = true;
+          "Lua.hint.setType" = true;
           languageserver = {
             haskell = {
               command = "haskell-language-server-wrapper";
@@ -277,6 +284,6 @@
   xdg.configFile."nvim/syntax/antlr4.vim".source = ./vim-files/antlr4.vim;
 
   xdg.configFile."youtube-dl/config".text = ''
-    -f 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best'
+    --retries infinite --fragment-retries infinite --format 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best'
   '';
 }
