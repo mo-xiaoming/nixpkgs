@@ -42,6 +42,25 @@
     man.enable = true;
     bottom.enable = true;
 
+    vscode = {
+      enable = true;
+      extensions = with pkgs.vscode-extensions; [
+        vscodevim.vim
+        yzhang.markdown-all-in-one
+        bbenoist.nix
+        serayuzgur.crates
+        eamodio.gitlens
+        coenraads.bracket-pair-colorizer
+        emmanuelbeziat.vscode-great-icons
+        matklad.rust-analyzer                 # rust
+        ms-vscode.cpptools                    # cpp
+        #xaver.clang-format                    # cpp
+        #notskm.clang-tidy                     # cpp
+        #llvm-vs-code-extensions.vscode-clangd # cpp
+        #denniskempin.vscode-include-fixer     # cpp
+      ];
+    };
+
     powerline-go = {
       enable = true;
       newline = true;
@@ -125,6 +144,17 @@
             alias powerline-go="/run/current-system/sw/bin/powerline-go"
           fi
         fi
+
+        function nix-index-update {
+          (
+            filename="index-x86_64-$(uname | tr A-Z a-z)"
+            mkdir -p ~/.cache/nix-index
+            cd ~/.cache/nix-index
+            # -N will only download a new version if there is an update.
+            wget -q -N https://github.com/Mic92/nix-index-database/releases/latest/download/$filename
+            ln -f $filename files
+          )
+        }
       '';
       logoutExtra = ''
         [ -x /usr/bin/clear_console ] && /usr/bin/clear_console -q
