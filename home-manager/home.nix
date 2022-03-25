@@ -52,6 +52,7 @@
         eamodio.gitlens
         coenraads.bracket-pair-colorizer
         emmanuelbeziat.vscode-great-icons
+        tabnine.tabnine-vscode
         matklad.rust-analyzer                 # rust
         ms-vscode.cpptools                    # cpp
         #xaver.clang-format                    # cpp
