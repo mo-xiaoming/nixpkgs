@@ -44,6 +44,20 @@
 
     vscode = {
       enable = true;
+      mutableExtensionsDir = true;
+      userSettings = {
+        "update.mode" = "none";
+        "workbench.colorTheme" = "Default Dark+";
+        "workbench.iconTheme" = "vscode-great-icons";
+        "rust-analyzer.checkOnSave.command" = "clippy";
+        "tabnine.experimentalAutoImports" = true;
+        "rust-analyzer.hoverActions.references" = true;
+        "rust-analyzer.lens.enumVariantReferences" = true;
+        "rust-analyzer.lens.methodReferences" = true;
+        "rust-analyzer.lens.references" = true;
+        "window.zoomLevel" = 1;
+        "editor.fontSize" = 13;
+      };
       extensions = with pkgs.vscode-extensions; [
         vscodevim.vim
         yzhang.markdown-all-in-one
@@ -52,12 +66,13 @@
         eamodio.gitlens
         coenraads.bracket-pair-colorizer
         emmanuelbeziat.vscode-great-icons
+        usernamehw.errorlens
         tabnine.tabnine-vscode
         matklad.rust-analyzer                 # rust
-        ms-vscode.cpptools                    # cpp
-        #xaver.clang-format                    # cpp
+        #ms-vscode.cpptools                    # cpp
+        xaver.clang-format                    # cpp
         #notskm.clang-tidy                     # cpp
-        #llvm-vs-code-extensions.vscode-clangd # cpp
+        llvm-vs-code-extensions.vscode-clangd # cpp
         #denniskempin.vscode-include-fixer     # cpp
       ];
     };
