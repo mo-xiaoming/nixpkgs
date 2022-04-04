@@ -49,8 +49,8 @@
         "update.mode" = "none";
         "workbench.colorTheme" = "Default Dark+";
         "workbench.iconTheme" = "vscode-great-icons";
+        "workbench.startupEditor" = "welcomePage";
         "rust-analyzer.checkOnSave.command" = "clippy";
-        "tabnine.experimentalAutoImports" = true;
         "rust-analyzer.hoverActions.references" = true;
         "rust-analyzer.lens.enumVariantReferences" = true;
         "rust-analyzer.lens.methodReferences" = true;
@@ -67,7 +67,7 @@
         coenraads.bracket-pair-colorizer
         emmanuelbeziat.vscode-great-icons
         usernamehw.errorlens
-        tabnine.tabnine-vscode
+        oderwat.indent-rainbow
         matklad.rust-analyzer                 # rust
         #ms-vscode.cpptools                    # cpp
         xaver.clang-format                    # cpp
