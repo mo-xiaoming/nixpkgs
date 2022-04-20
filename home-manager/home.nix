@@ -49,7 +49,7 @@
         "update.mode" = "none";
         "workbench.colorTheme" = "Default Dark+";
         "workbench.iconTheme" = "vscode-great-icons";
-        "workbench.startupEditor" = "welcomePage";
+        "workbench.startupEditor" = "none";
         "rust-analyzer.checkOnSave.command" = "clippy";
         "rust-analyzer.hoverActions.references" = true;
         "rust-analyzer.lens.enumVariantReferences" = true;
@@ -66,9 +66,12 @@
         eamodio.gitlens
         coenraads.bracket-pair-colorizer
         emmanuelbeziat.vscode-great-icons
+        streetsidesoftware.code-spell-checker
         usernamehw.errorlens
         oderwat.indent-rainbow
         matklad.rust-analyzer                 # rust
+        vadimcn.vscode-lldb                   # rust
+        bungcip.better-toml                   # rust
         #ms-vscode.cpptools                    # cpp
         xaver.clang-format                    # cpp
         #notskm.clang-tidy                     # cpp
@@ -243,6 +246,7 @@
         taglist-vim
         coc-explorer
         coc-json
+        coc-spell-checker
         rainbow
         vim-airline
         vim-signify
