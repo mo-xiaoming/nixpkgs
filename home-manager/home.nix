@@ -17,7 +17,7 @@
     zip
     unzip
     silver-searcher
-    youtube-dl
+    yt-dlp
     ctags   # for nvim plugin
     sysstat # for tmux-cpu
     (writeScriptBin "nixFlakes" ''
@@ -333,7 +333,7 @@
   xdg.configFile."nvim/syntax/hobbes.vim".source = ./vim-files/hobbes.vim;
   xdg.configFile."nvim/syntax/antlr4.vim".source = ./vim-files/antlr4.vim;
 
-  xdg.configFile."youtube-dl/config".text = ''
-    --retries infinite --fragment-retries infinite --format 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best'
+  xdg.configFile."yt-dlp/config".text = ''
+    --retries infinite --fragment-retries infinite --format "bv+ba/b"
   '';
 }
