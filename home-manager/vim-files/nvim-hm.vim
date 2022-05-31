@@ -69,6 +69,11 @@ cnoremap <C-h> <BS>
 """""""""""""""""""""" vim-localvimrc
 let g:localvimrc_sandbox = 0
 
+"""""""""""""""""""""" minimap
+let g:minimap_highlight_range = 1
+let g:minimap_highlight_search = 1
+let g:minimap_git_colors = 1
+
 """""""""""""""""""""" ctrlp
 let g:ctrlp_match_window = 'results:100' " overcome limit imposed by max height
 let g:ctrlp_working_path_mode = ""

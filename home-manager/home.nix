@@ -4,9 +4,6 @@
       patches = (old.patches or []) ++ [ ./nix-powerline-go.patch ];
     });
   }) ];
-  nixpkgs.config = {
-    allowUnfree = true;
-  };
 
   targets.genericLinux.enable = true;
 
@@ -44,32 +41,48 @@
 
     vscode = {
       enable = true;
+      package = pkgs.vscodium;
       mutableExtensionsDir = true;
       userSettings = {
-        "update.mode" = "none";
-        "workbench.colorTheme" = "Default Dark+";
-        "workbench.iconTheme" = "vscode-great-icons";
-        "workbench.startupEditor" = "none";
+        "editor.fontSize" = 13;
+        "editor.formatOnSave" = true;
+        "editor.formatOnSaveMode" = "modificationsIfAvailable";
+        "editor.inlayHints.enabled" = true;
+        "errorLens.statusBarIconsEnabled" = false;
+        "errorLens.statusBarMessageEnabled" = false;
         "rust-analyzer.checkOnSave.command" = "clippy";
         "rust-analyzer.hoverActions.references" = true;
+        "rust-analyzer.inlayHints.chainingHints" = true;
+        "rust-analyzer.inlayHints.closureReturnTypeHints" = true;
+        "rust-analyzer.inlayHints.enable" = true;
+        "rust-analyzer.inlayHints.lifetimeElisionHints.enable" = "always";
+        "rust-analyzer.inlayHints.maxLength" = null;
+        "rust-analyzer.inlayHints.parameterHints" = true;
+        "rust-analyzer.inlayHints.typeHints" = true;
         "rust-analyzer.lens.enumVariantReferences" = true;
         "rust-analyzer.lens.methodReferences" = true;
         "rust-analyzer.lens.references" = true;
+        "update.mode" = "none";
+        "vim.enableNeovim" = true;
+        "vim.hlsearch" = true;
         "window.zoomLevel" = 1;
-        "editor.fontSize" = 13;
+        "workbench.colorTheme" = "Default Dark+";
+        "workbench.iconTheme" = "vscode-great-icons";
+        "workbench.startupEditor" = "none";
       };
       extensions = with pkgs.vscode-extensions; [
         vscodevim.vim
+        gruntfuggly.todo-tree
         yzhang.markdown-all-in-one
         bbenoist.nix
         serayuzgur.crates
         eamodio.gitlens
         coenraads.bracket-pair-colorizer
         emmanuelbeziat.vscode-great-icons
-        streetsidesoftware.code-spell-checker
+        #streetsidesoftware.code-spell-checker
         usernamehw.errorlens
         oderwat.indent-rainbow
-        matklad.rust-analyzer                 # rust
+        #matklad.rust-analyzer                 # rust
         vadimcn.vscode-lldb                   # rust
         bungcip.better-toml                   # rust
         #ms-vscode.cpptools                    # cpp
@@ -128,7 +141,7 @@
         {
           plugin = tmuxPlugins.cpu;
           extraConfig = ''
-            set -g status-left-length 25
+            set -g status-left-length 50
             set -g @cpu_percentage_format "%5.1f%%"
             set -g status-left '#S #{cpu_bg_color}#{cpu_percentage} #{ram_bg_color}#{ram_percentage} '
           '';
@@ -184,6 +197,7 @@
         egrep = "egrep --color=auto";
         fgrep = "fgrep --color=auto";
         ll = "ls -alF";
+        yt-dlp-list = "yt-dlp -o '%(playlist_index)03d-%(title)s-%(id)s.%(ext)s'";
       };
     };
 
@@ -240,10 +254,10 @@
         };
       in [
         vim-nix
-        coc-nvim
+        #coc-nvim
         #coc-clangd # :CocCommand clangd.install
         vim-lsp-cxx-highlight
-        taglist-vim
+        #taglist-vim
         coc-explorer
         coc-json
         coc-spell-checker
@@ -253,14 +267,26 @@
         git-blame-nvim
         ctrlp-vim
         vim-syntax-extra
-        vim-gutentags
+        vim-gutentags # ctags not in path error
         vim-localvimrc
         tagbar
         fzf-vim
+        minimap-vim
       ];
 
       coc = {
         enable = true;
+        package = pkgs.vimUtils.buildVimPluginFrom2Nix {
+          pname = "coc.nvim";
+          version = "2022-05-21";
+          src = pkgs.fetchFromGitHub {
+            owner = "neoclide";
+            repo = "coc.nvim";
+            rev = "791c9f673b882768486450e73d8bda10e391401d";
+            sha256 = "sha256-MobgwhFQ1Ld7pFknsurSFAsN5v+vGbEFojTAYD/kI9c=";
+          };
+          meta.homepage = "https://github.com/neoclide/coc.nvim/";
+        };
         settings = {
           "suggest.noselect" = true;
           "suggest.enablePreview" = true;
@@ -292,7 +318,7 @@
           "coc.preferences.colorSupport" = true;
           "coc.preferences.currentFunctionSymbolAutoUpdate" = true;
           "coc.preferences.formatOnSaveFiletypes" = [ "rust" ];
-          #"clangd.path" = "~/.config/coc/extensions/coc-clangd-data/install/13.0.0/clangd_13.0.0/bin/clangd";
+          #"clangd.path" = "~/.config/coc/extensions/coc-clangd-data/install/14.0.3/clangd_14.0.3/bin/clangd";
           "clangd.semanticHighlighting" = true;
           "clangd.fallbackFlags" = [ "-std=gnu++17" "-Wall" "-Wextra" "-Wshadow" ];
           "rust-analyzer.experimental.procAttrMacros" = true;
@@ -334,6 +360,6 @@
   xdg.configFile."nvim/syntax/antlr4.vim".source = ./vim-files/antlr4.vim;
 
   xdg.configFile."yt-dlp/config".text = ''
-    --retries infinite --fragment-retries infinite --format "bv+ba/b"
+    --retries infinite --fragment-retries infinite --format 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best'
   '';
 }
