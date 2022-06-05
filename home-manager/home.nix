@@ -44,7 +44,7 @@
       package = pkgs.vscodium;
       mutableExtensionsDir = true;
       userSettings = {
-        "editor.fontSize" = 13;
+        "editor.fontSize" = 12;
         "editor.formatOnSave" = true;
         "editor.formatOnSaveMode" = "modificationsIfAvailable";
         "editor.inlayHints.enabled" = true;
